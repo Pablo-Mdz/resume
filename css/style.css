@@ -340,7 +340,10 @@ a {
       font-size: 12px;
       text-transform: uppercase;
       color: #cccccc; }
-
+      .single-portfolio .image {
+        height: 250px; /* Ajusta esta altura según necesites */
+        object-fit: cover; /* Esto recorta la imagen para que mantenga la proporción */
+    }
 /*--------- Start Portfolio Area -------------*/
 .portfolio-area .primary-btn {
   color: #fff;
