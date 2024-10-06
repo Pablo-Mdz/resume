@@ -188,7 +188,7 @@ a:active {
     background-color: #ccc;
     background-size: cover;
     padding-top: 200px;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
@@ -234,7 +234,16 @@ a:active {
     margin: 0 auto;
     color: rgba(255, 255, 255, 0.5);
 }
-
+.content-offset {
+    position: relative;
+    left: 500px;
+    bottom: 100px; /* image */
+}
+@media (max-width: 1400px) {
+    .content-offset {
+        left: 0; /* Restablece el desplazamiento en pantallas pequeñas */
+    }
+}
 .site-section {
     padding: 5em 0;
 }
