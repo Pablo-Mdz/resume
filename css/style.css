@@ -242,6 +242,7 @@ a:active {
 @media (max-width: 1400px) {
     .content-offset {
         left: 0; /* Restablece el desplazamiento en pantallas pequeñas */
+        top: 70px; /* image */
     }
 }
 .site-section {
