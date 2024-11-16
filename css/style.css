@@ -185,7 +185,7 @@ a:active {
 }
 
 .site-hero {
-    background-image: url('/images/BildPablo.png');
+    background-image: url('/images/BildPablo2.png');
     background-color: #ccc;
     background-size: cover;
     padding-top: 160px;
@@ -222,6 +222,7 @@ a:active {
         font-size: 70px;
     }
 }
+
 
 .site-hero h1,
 .site-hero .lead {
