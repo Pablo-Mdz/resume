@@ -185,20 +185,49 @@ a:active {
 }
 
 .site-hero {
-    background-image: url('/images/BildPablo2.png');
+    background-image: url("/images/BildPablo2.png");
     background-color: #ccc;
     background-size: cover;
     padding-top: 160px;
-    background-position: center center;
+    background-position: 75% center;
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
 }
+
+/* Tablets grandes */
+@media (max-width: 1200px) {
+    .site-hero {
+        background-position: 65% center;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .site-hero {
+        background-position: 60% center;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-hero {
+        background-position: 55% center;
+        padding-top: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .site-hero {
+        background-position: 45% center;
+    }
+}
+
 .site-hero,
 .site-hero .row {
-    height: 200vh;
-    min-height: 800px;
+    height: 100vh;
+    min-height: 600px;
 }
+
 .site-hero:before {
     content: "";
     position: absolute;
@@ -213,7 +242,23 @@ a:active {
     font-weight: 200;
     margin-bottom: 20px;
     display: block;
+    text-align: center;
+    padding-right: 20px;
 }
+
+@media (max-width: 768px) {
+    .site-hero h1 {
+        font-size: 40px !important;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .site-hero h1 {
+        font-size: 32px !important;
+    }
+}
+
 .site-hero h1 strong {
     font-weight: 800;
 }
@@ -223,7 +268,6 @@ a:active {
     }
 }
 
-
 .site-hero h1,
 .site-hero .lead {
     font-weight: 200;
@@ -232,6 +276,14 @@ a:active {
 .site-hero .lead {
     line-height: 2;
 }
+
+@media (max-width: 768px) {
+    .site-hero .lead {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+}
+
 .site-hero .site-subheading {
     max-width: 640px;
     margin: 0 auto;
@@ -239,15 +291,41 @@ a:active {
 }
 .content-offset {
     position: relative;
-    left: 500px;
-    bottom: 100px; /* image */
+    left: 350px;
+    text-align: center;
+    padding: 0 20px;
+    top: -150px;
 }
-@media (max-width: 1400px) {
+
+/* Tablets */
+@media (max-width: 1024px) {
     .content-offset {
-        left: 0; /* Restablece el desplazamiento en pantallas pequeñas */
-        top: 70px; /* image */
+        left: 150px;
+        top: -100px;
     }
 }
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+    .content-offset {
+        left: 0;
+        top: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+}
+
+/* Móviles */
+@media (max-width: 576px) {
+    .content-offset {
+        padding: 10px;
+    }
+}
+
 .site-section {
     padding: 5em 0;
 }
