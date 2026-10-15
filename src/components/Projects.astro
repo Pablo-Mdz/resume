@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import { projects, categories } from '../data/site';
+import { projects, categories, type Category } from '../data/site';
 
 const count = (id: string) =>
-  id === 'all' ? projects.length : projects.filter((p) => p.category === id).length;
+  id === 'all' ? projects.length : projects.filter((p) => p.categories.includes(id as Category)).length;
 const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? id;
 ---
 
@@ -31,7 +31,7 @@ const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? i
       {projects.map((p, i) => {
         const Tag = p.href ? 'a' : 'div';
         return (
-          <li class="card" data-card data-category={p.category}>
+          <li class="card" data-card data-categories={p.categories.join(' ')}>
             <Tag
               class="card__link"
               {...(p.href ? { href: p.href, target: '_blank', rel: 'noopener' } : {})}
@@ -44,7 +44,7 @@ const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? i
                   widths={[480, 720, 1000]}
                   sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 31vw"
                 />
-                <span class="card__cat mono">{labelFor(p.category)}</span>
+                <span class="card__cat mono">{p.categories.map(labelFor).join(' · ')}</span>
               </div>
               <div class="card__info">
                 <span class="card__idx mono">{String(i + 1).padStart(2, '0')}</span>
@@ -54,6 +54,7 @@ const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? i
                     {p.href && <span class="arrow" aria-hidden="true">↗</span>}
                   </h3>
                   <p class="card__kind">{p.kind}</p>
+                  {p.summary && <p class="card__summary">{p.summary}</p>}
                 </div>
               </div>
               <ul class="card__stack" aria-label="Tech stack" translate="no">
@@ -64,12 +65,12 @@ const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? i
         );
       })}
 
-      <li class="card card--soon" data-card data-category="ai" hidden>
+      <li class="card card--soon" data-card data-categories="ai" hidden>
         <div class="soon">
           <p class="mono">~/projects/ai $ <span class="caret" aria-hidden="true"></span></p>
-          <h3 class="soon__title">AI-built projects are <span class="serif">landing soon.</span></h3>
+          <h3 class="soon__title">More AI projects <span class="serif">on the way.</span></h3>
           <p class="soon__text">
-            Complex apps built on solid fundamentals and accelerated with AI. Case studies on the way.
+            Complex apps built on solid fundamentals and accelerated with AI. New case studies are being added.
           </p>
         </div>
       </li>
@@ -218,6 +219,13 @@ const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? i
     color: var(--slate);
     font-size: 0.9rem;
     margin-top: 0.2rem;
+  }
+
+  .card__summary {
+    margin-top: 0.6rem;
+    color: var(--slate);
+    font-size: 0.92rem;
+    line-height: 1.5;
   }
 
   .card__stack {

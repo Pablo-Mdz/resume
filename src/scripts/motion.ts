@@ -57,7 +57,7 @@ if (grid) {
 
   const isVisible = (card: HTMLElement, filter: string) => {
     if (card.matches('.card--soon')) return filter === 'ai';
-    return filter === 'all' || card.dataset.category === filter;
+    return filter === 'all' || (card.dataset.categories ?? '').split(' ').includes(filter);
   };
 
   const setFilter = (filter: string, animate: boolean) => {

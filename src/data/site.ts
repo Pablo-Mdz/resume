@@ -8,7 +8,7 @@ import prm from '../assets/projects/prm.webp';
 import notitasNadja from '../assets/projects/notitas-nadja.webp';
 import beChef from '../assets/projects/be-chef.webp';
 import saborLatino from '../assets/projects/sabor-latino.webp';
-import stellaMaris from '../assets/projects/stella-maris.webp';
+import alfayataMasonica from '../assets/projects/alfayata-masonica.webp';
 import padelAmericano from '../assets/projects/padel-americano.webp';
 import saveOliver from '../assets/projects/save-oliver.webp';
 import trucoCounter from '../assets/projects/truco-counter.webp';
@@ -38,17 +38,29 @@ export const categories: { id: Category | 'all'; label: string }[] = [
 export interface Project {
   title: string;
   kind: string;
-  category: Category;
+  categories: Category[];
   stack: string[];
+  /** One or two lines shown on the card. */
+  summary?: string;
   image: ImageMetadata;
   href?: string;
 }
 
 export const projects: Project[] = [
   {
+    title: 'Alfayata Masónica',
+    kind: 'AI-powered catalog & CMS · returning client',
+    categories: ['ai', 'web'],
+    stack: ['React 19', 'Vite', 'Firebase', 'Vercel Functions', 'Claude API', 'Gemini', 'Tailwind'],
+    summary:
+      'Catalog and admin panel for an artisan Masonic tailor. A multi-model AI pipeline turns phone snapshots into studio-quality product photos: Claude plans the shot, Gemini renders it, and Claude reviews the result against the original before it goes live.',
+    image: alfayataMasonica,
+    href: 'https://alfayatamasonicamdz.vercel.app/',
+  },
+  {
     title: 'Catering Manager',
     kind: 'iOS App',
-    category: 'mobile',
+    categories: ['mobile'],
     stack: ['Swift', 'Firebase', 'REST API', 'MVVM'],
     image: cateringManager,
     href: 'https://medium.com/@pablocigoy/catering-manager-a-catering-event-management-tool-developed-with-swiftui-dd5fe95964cc',
@@ -56,7 +68,7 @@ export const projects: Project[] = [
   {
     title: 'Mate Mundo',
     kind: 'iOS App',
-    category: 'mobile',
+    categories: ['mobile'],
     stack: ['Swift', 'Firebase', 'Xcode', 'MVVM'],
     image: mateMundo,
     href: 'https://medium.com/@pablocigoy/matemundo-your-ultimate-yerba-mate-marketplace-app-for-ios-50226025e514',
@@ -64,7 +76,7 @@ export const projects: Project[] = [
   {
     title: 'Kita Adventure',
     kind: 'Android App',
-    category: 'mobile',
+    categories: ['mobile'],
     stack: ['Kotlin', 'Android Studio', 'Figma', 'MVVM'],
     image: kitaAdventure,
     href: 'https://medium.com/@pablocigoy/case-study-abenteuer-kita-facilitating-communication-and-engagement-in-early-childhood-education-e14857209862',
@@ -72,7 +84,7 @@ export const projects: Project[] = [
   {
     title: 'WhatsApp Clone',
     kind: 'Android App',
-    category: 'mobile',
+    categories: ['mobile'],
     stack: ['Android'],
     image: whatsappClone,
     href: 'https://github.com/Pablo-Mdz/WhatsSyntax',
@@ -80,7 +92,7 @@ export const projects: Project[] = [
   {
     title: 'PRM',
     kind: 'UX/UI App Design',
-    category: 'uxui',
+    categories: ['uxui'],
     stack: ['Figma', 'UX Research'],
     image: prm,
     href: 'https://medium.com/@pablocigoy/project-resources-management-ein-ux-ui-designprojekt-zur-f%C3%B6rderung-der-effektiven-zusammenarbeit-3a2b3dae2836',
@@ -88,7 +100,7 @@ export const projects: Project[] = [
   {
     title: 'Notitas von Nadja',
     kind: 'UX/UI App Design',
-    category: 'uxui',
+    categories: ['uxui'],
     stack: ['Figma', 'iOS vs Android'],
     image: notitasNadja,
     href: 'https://medium.com/@pablocigoy/ux-ui-design-comparison-android-vs-ios-9c2559f5c3d1',
@@ -96,7 +108,7 @@ export const projects: Project[] = [
   {
     title: 'Be Chef',
     kind: 'Website',
-    category: 'web',
+    categories: ['web'],
     stack: ['JavaScript', 'React'],
     image: beChef,
     href: 'https://be-chef.netlify.app/',
@@ -104,22 +116,14 @@ export const projects: Project[] = [
   {
     title: 'Sabor Latino',
     kind: 'Website',
-    category: 'web',
+    categories: ['web'],
     stack: ['JavaScript', 'Handlebars'],
     image: saborLatino,
   },
   {
-    title: 'Stella Maris Masonic Outfitters',
-    kind: 'Website',
-    category: 'web',
-    stack: ['JavaScript', 'React'],
-    image: stellaMaris,
-    href: 'https://stellamaris-masoneria.netlify.app/',
-  },
-  {
     title: 'Padel Americano',
     kind: 'Website',
-    category: 'web',
+    categories: ['web'],
     stack: ['JavaScript'],
     image: padelAmericano,
     href: 'https://padel-americano.netlify.app/',
@@ -127,7 +131,7 @@ export const projects: Project[] = [
   {
     title: 'Save Oliver from His Fears',
     kind: 'Browser Game',
-    category: 'web',
+    categories: ['web'],
     stack: ['JavaScript', 'P5.js'],
     image: saveOliver,
     href: 'https://pablo-mdz.github.io/Game-P5-Shooting/',
@@ -135,7 +139,7 @@ export const projects: Project[] = [
   {
     title: 'Truco Counter',
     kind: 'Website',
-    category: 'web',
+    categories: ['web'],
     stack: ['JavaScript'],
     image: trucoCounter,
     href: 'https://dulcet-pudding-105e47.netlify.app/',
@@ -220,30 +224,36 @@ export const services = [
   },
 ];
 
+const hrefOf = (title: string) => {
+  const href = projects.find((p) => p.title === title)?.href;
+  if (!href) throw new Error(`No project link for article "${title}"`);
+  return href;
+};
+
 export const articles = [
   {
     title: 'Catering Manager — an event management tool built with SwiftUI',
     meta: 'Swift · Firebase · REST API · MVVM',
-    href: projects[0].href!,
+    href: hrefOf('Catering Manager'),
   },
   {
     title: 'Mate Mundo — a yerba mate marketplace app for iOS',
     meta: 'Swift · Firebase · Xcode · MVVM',
-    href: projects[1].href!,
+    href: hrefOf('Mate Mundo'),
   },
   {
     title: 'Case study: Abenteuer Kita — communication in early childhood education',
     meta: 'Kotlin · Android Studio · Figma · MVVM',
-    href: projects[2].href!,
+    href: hrefOf('Kita Adventure'),
   },
   {
     title: 'Project Resources Management — a UX/UI design project',
     meta: 'UX & UI research with Figma',
-    href: projects[4].href!,
+    href: hrefOf('PRM'),
   },
   {
     title: 'Notitas von Nadja — UX/UI comparison between Android and iOS',
     meta: 'Platform design guidelines',
-    href: projects[5].href!,
+    href: hrefOf('Notitas von Nadja'),
   },
 ];
