@@ -232,16 +232,23 @@ import portrait from '../assets/photos/pablo-portrait.webp';
   @media (max-width: 760px) {
     .hero__inner {
       padding-top: 5.5rem;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 1.5rem;
     }
     .hero__name {
       align-self: start;
-      margin-top: 2rem;
+      margin-top: 1rem;
       font-size: 21vw;
     }
+    /* on phones the photo sits under the name instead of behind it, so the white name never lands on the light photo */
     .hero__photo {
-      width: 46vw;
-      top: 56%;
-      transform: translate(-50%, -50%);
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 52vw;
+      max-width: 15rem;
+      transform: none;
+      align-self: start;
     }
     .hero__meta span:last-child {
       display: none;
