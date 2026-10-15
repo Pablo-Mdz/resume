@@ -249,7 +249,7 @@ export const education: TimelineItem[] = [
     date: 'Aug 2023 — Aug 2024',
     title: 'Mobile Developer Weiterbildung (Android / iOS)',
     place: 'Syntax Institut',
-    text: 'One-year intensive training in mobile application development with hands-on projects on both platforms, including a four-month UX/UI module: design fundamentals, Figma, wireframing and layout.',
+    text: 'One-year full-time training (2,300 teaching units) in mobile development with Kotlin and Swift, MVVM, Room, Retrofit and Firebase, including a two-month UX/UI module: user research, wireframing and Figma prototyping.',
   },
   {
     date: 'Sep — Dec 2022',
