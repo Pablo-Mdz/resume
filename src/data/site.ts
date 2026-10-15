@@ -219,7 +219,7 @@ export interface TimelineItem {
 
 export const experience: TimelineItem[] = [
   {
-    date: '2025 — Present',
+    date: 'Aug 2025 — Present',
     title: 'Deputy Manager',
     place: '4PADEL Berlin Reinickendorf',
     text: 'Operational management of a six-court indoor padel club: staff management and shift planning, conflict resolution, and organising corporate and private events. I handle customer communication in German, English and Spanish — bookings, cancellations and refunds — and build AI tools for the club’s daily work, like an assistant that drafts customer replies from the club’s own policies.',
