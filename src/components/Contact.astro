@@ -1,0 +1,184 @@
+---
+import { profile } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<section class="contact section section--dark" id="contact">
+  <div class="blueprint" aria-hidden="true"></div>
+
+  <div class="wrap contact__inner">
+    <p class="eyebrow mono">Get in touch</p>
+
+    <h2 class="contact__title" data-reveal data-split>
+      What do <span class="serif">you</span> need?
+    </h2>
+
+    <div class="contact__mail">
+      <a href={`mailto:${profile.email}`} class="contact__email" data-magnetic>
+        {profile.email}
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <button class="contact__copy mono" data-copy={profile.email}>
+        <span data-copy-label>Copy email</span>
+      </button>
+    </div>
+
+    <div class="contact__grid">
+      <div>
+        <p class="mono contact__label">Based in</p>
+        <p>{profile.location}</p>
+      </div>
+      <div>
+        <p class="mono contact__label">Local time</p>
+        <p data-clock>—</p>
+      </div>
+      <div>
+        <p class="mono contact__label">Elsewhere</p>
+        <ul class="contact__socials">
+          {profile.socials.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener">
+                {s.label} <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer wrap">
+    <p class="mono">© {year} Pablo Cigoy</p>
+    <p class="mono">Designed &amp; coded by Pablo · Astro + GSAP</p>
+    <a href="#top" class="mono" data-scroll-link>Back to top ↑</a>
+  </footer>
+</section>
+
+<style>
+  .contact {
+    padding-bottom: 2rem;
+    overflow: hidden;
+  }
+
+  .contact__inner {
+    position: relative;
+  }
+
+  .contact__title {
+    font-size: clamp(3.5rem, 1rem + 11vw, 13rem);
+    font-weight: 800;
+    font-stretch: 75%;
+    line-height: 0.85;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+  }
+
+  .contact__title .serif {
+    text-transform: none;
+    color: var(--mist);
+  }
+
+  .contact__mail {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .contact__email {
+    display: inline-flex;
+    gap: 0.6rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.8rem, 1rem + 3.5vw, 4.5rem);
+    line-height: 1.1;
+    border-bottom: 1px solid var(--mist);
+    padding-bottom: 0.3rem;
+    word-break: break-all;
+  }
+
+  .contact__copy {
+    padding: 0.8rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--line-dark);
+    font-size: 0.6rem;
+    color: var(--mist);
+    transition:
+      background 0.3s,
+      color 0.3s;
+  }
+
+  .contact__copy:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .contact__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: clamp(4rem, 8vw, 7rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--line-dark);
+  }
+
+  .contact__label {
+    color: var(--mist);
+    font-size: 0.58rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .contact__socials {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .contact__socials a:hover {
+    color: var(--mist);
+  }
+
+  .footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: clamp(5rem, 10vw, 8rem);
+    color: var(--mist);
+    font-size: 0.58rem;
+  }
+
+  @media (max-width: 760px) {
+    .contact__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<script>
+  const clock = document.querySelector<HTMLElement>('[data-clock]');
+  const fmt = new Intl.DateTimeFormat('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Berlin',
+  });
+  const tick = () => {
+    if (clock) clock.textContent = `${fmt.format(new Date())} CET/CEST`;
+  };
+  tick();
+  setInterval(tick, 30_000);
+
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    const label = btn.querySelector<HTMLElement>('[data-copy-label]')!;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy!);
+        label.textContent = 'Copied ✓';
+      } catch {
+        label.textContent = 'Copy failed';
+      }
+      setTimeout(() => (label.textContent = 'Copy email'), 2000);
+    });
+  });
+</script>

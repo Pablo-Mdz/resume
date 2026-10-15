@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+import aboutPhoto from '../assets/photos/pablo-about.webp';
+
+const stats = [
+  { value: '10+', label: 'years leading teams' },
+  { value: '38', label: 'countries traveled' },
+  { value: '2', label: 'native platforms — iOS & Android' },
+];
+---
+
+<section class="about section section--dark" id="about">
+  <div class="blueprint" aria-hidden="true"></div>
+  <div class="wrap about__grid">
+    <figure class="about__photo" data-clip-reveal>
+      <div class="about__photo-inner" data-parallax="-10">
+        <Image
+          src={aboutPhoto}
+          alt="Pablo Cigoy sitting in a studio"
+          widths={[480, 720, 1000]}
+          sizes="(max-width: 860px) 90vw, 40vw"
+        />
+      </div>
+    </figure>
+
+    <div class="about__copy">
+      <p class="eyebrow mono">About me</p>
+      <h2 class="section-title" data-reveal data-split>
+        Chef, <span class="serif">then</span> developer
+      </h2>
+
+      <p class="about__lead" data-reveal data-fade-up>
+        I'm Pablo Cigoy, a certified mobile app developer creating apps and digital solutions — mobile and web —
+        that are user-friendly and efficient.
+      </p>
+
+      <p class="about__text" data-reveal data-fade-up>
+        I've taught programming at ReDI School in Berlin, where I share my passion for software development.
+        Before code, I spent over ten years in kitchen leadership roles — and traveling through 38 countries
+        sharpened my teamwork, management and organizational skills. I thrive in teams and I'm committed to
+        continuous improvement. Outside of work: cooking, traveling and cycling.
+      </p>
+
+      <ul class="stats">
+        {stats.map((s) => (
+          <li data-reveal data-fade-up>
+            <span class="stats__value" data-count={s.value}>{s.value}</span>
+            <span class="stats__label mono">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+
+      <a href="#contact" class="btn btn--light" data-scroll-link data-magnetic>
+        Hire me <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    overflow: hidden;
+  }
+
+  .about__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: clamp(2rem, 7vw, 7rem);
+    align-items: center;
+  }
+
+  .about__photo {
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+
+  .about__photo-inner {
+    height: 115%;
+  }
+
+  .about__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+  }
+
+  .about__lead {
+    font-size: clamp(1.3rem, 1rem + 1vw, 1.9rem);
+    line-height: 1.25;
+    margin: 2rem 0 1.25rem;
+    text-wrap: pretty;
+  }
+
+  .about__text {
+    color: var(--mist);
+    max-width: 38rem;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2.5rem 0;
+    padding-block: 1.5rem;
+    border-block: 1px solid var(--line-dark);
+  }
+
+  .stats li {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .stats__value {
+    font-size: clamp(2.4rem, 1.6rem + 2.5vw, 4rem);
+    font-weight: 700;
+    font-stretch: 78%;
+    line-height: 1;
+  }
+
+  .stats__label {
+    color: var(--mist);
+    font-size: 0.56rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 860px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+    .about__photo {
+      max-width: 26rem;
+    }
+  }
+</style>

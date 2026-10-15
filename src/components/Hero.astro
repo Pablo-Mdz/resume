@@ -1,0 +1,272 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/photos/pablo-portrait.webp';
+---
+
+<section class="hero section--dark" id="top" data-hero>
+  <div class="blueprint" aria-hidden="true"></div>
+
+  <div class="hero__inner wrap">
+    <div class="hero__meta mono" data-hero-fade>
+      <span>Software Developer</span>
+      <span class="hero__meta-mid">52.52° N, 13.40° E — Berlin</span>
+      <span>Web · Mobile · UX/UI · AI</span>
+    </div>
+
+    <h1 class="hero__name" aria-label="Pablo Cigoy">
+      <span class="line-mask hero__row hero__row--a" aria-hidden="true">
+        <span data-hero-line>Pablo</span>
+      </span>
+      <span class="line-mask hero__row hero__row--b" aria-hidden="true">
+        <span data-hero-line>Cigoy</span>
+      </span>
+    </h1>
+
+    <figure class="hero__photo" data-hero-photo>
+      <div class="hero__photo-inner" data-parallax="-12">
+        <Image
+          src={portrait}
+          alt="Portrait of Pablo Cigoy"
+          widths={[360, 560, 800]}
+          sizes="(max-width: 760px) 46vw, 22vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="mono">fig. 01 — the developer</figcaption>
+    </figure>
+
+    <div class="hero__bottom">
+      <div class="div-toy" data-div-toy data-hero-fade aria-hidden="true">
+        <div class="div-toy__box"><span class="div-toy__dot"></span></div>
+        <code class="div-toy__code">
+          place-items: <b data-div-toy-value>start</b>;
+        </code>
+      </div>
+
+      <p class="hero__lead" data-hero-fade>
+        I build apps <em class="serif">from zero</em> — knowing how every layer works — and go further,
+        faster, with <em class="serif">AI</em>.
+      </p>
+
+      <a href="#manifesto" class="hero__scroll mono" data-scroll-link data-hero-fade>
+        <span>Scroll</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 2rem;
+    padding-top: 6.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--mist);
+    font-size: 0.62rem;
+  }
+
+  .hero__name {
+    align-self: center;
+    font-size: clamp(5.5rem, 23vw, 24rem);
+    font-weight: 800;
+    font-stretch: 75%;
+    line-height: 0.8;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    color: var(--paper);
+    pointer-events: none;
+  }
+
+  .hero__row--b {
+    text-align: right;
+  }
+
+  .hero__photo {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: clamp(10rem, 22vw, 21rem);
+    margin: 0;
+    transform: translate(-30%, -46%) rotate(-4deg);
+  }
+
+  .hero__photo-inner {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 14px;
+    background: var(--indigo);
+    box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.6);
+  }
+
+  .hero__photo-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--indigo);
+    mix-blend-mode: color;
+    transition: opacity 0.8s var(--ease-out);
+  }
+
+  .hero__photo:hover .hero__photo-inner::after {
+    opacity: 0;
+  }
+
+  .hero__photo img {
+    width: 100%;
+    height: 115%;
+    object-fit: cover;
+    object-position: 50% 20%;
+  }
+
+  .hero__photo figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.55rem;
+    color: var(--mist);
+  }
+
+  .hero__bottom {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: end;
+    gap: 2rem;
+  }
+
+  .hero__lead {
+    max-width: 30rem;
+    justify-self: center;
+    font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.6rem);
+    line-height: 1.25;
+    color: var(--mist);
+    text-wrap: balance;
+  }
+
+  .hero__lead em {
+    color: var(--paper);
+    font-size: 1.12em;
+  }
+
+  .hero__scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.58rem;
+    color: var(--mist);
+  }
+
+  .hero__scroll-line {
+    position: relative;
+    width: 1px;
+    height: 3.5rem;
+    background: var(--line-dark);
+    overflow: hidden;
+  }
+
+  .hero__scroll-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    animation: drip 2s var(--ease-out) infinite;
+  }
+
+  @keyframes drip {
+    0% { transform: translateY(-100%); }
+    60%, 100% { transform: translateY(100%); }
+  }
+
+  /* the "yes, I can center a div" toy */
+  .div-toy {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .div-toy__box {
+    width: 9rem;
+    height: 5.5rem;
+    border: 1px dashed var(--mist);
+    border-radius: 6px;
+    position: relative;
+    background-image:
+      linear-gradient(var(--line-dark) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-dark) 1px, transparent 1px);
+    background-size: 50% 50%;
+    background-position: center;
+  }
+
+  .div-toy__dot {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 4px;
+    background: var(--paper);
+  }
+
+  .div-toy__code {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--mist);
+  }
+
+  .div-toy__code b {
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  @media (max-width: 900px) {
+    .hero__meta-mid {
+      display: none;
+    }
+    .hero__bottom {
+      grid-template-columns: 1fr auto;
+    }
+    .div-toy {
+      display: none;
+    }
+    .hero__lead {
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero__inner {
+      padding-top: 5.5rem;
+    }
+    .hero__name {
+      align-self: start;
+      margin-top: 2rem;
+      font-size: 29vw;
+    }
+    .hero__photo {
+      width: 46vw;
+      top: 56%;
+      transform: translate(-50%, -50%) rotate(-4deg);
+    }
+    .hero__meta span:last-child {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,277 @@
+---
+const stages = [
+  {
+    when: '2009 — 2021',
+    title: 'The Kitchen',
+    text: 'Twelve years as Head Chef across Germany, Brazil, Mexico, France and Argentina. Leading multicultural teams, building systems that hold up under pressure.',
+    chips: ['Leadership', 'Teamwork', 'Organization', '5 countries'],
+  },
+  {
+    when: '2022',
+    title: 'Hello, World',
+    text: 'JavaScript first, then the full MERN stack at Ironhack. Learning every layer from scratch — markup, styles, APIs, databases.',
+    chips: ['JavaScript', 'React', 'Node.js', 'Express', 'MongoDB', 'HTML5', 'CSS3'],
+  },
+  {
+    when: '2023 — 2024',
+    title: 'Native Mobile',
+    text: 'A year at Syntax Institut and the official IHK certification: native apps for iOS and Android with clean MVVM architecture.',
+    chips: ['Swift', 'SwiftUI', 'Kotlin', 'Firebase', 'MVVM'],
+  },
+  {
+    when: '2023 →',
+    title: 'Design & Teaching',
+    text: 'UX/UI research and prototyping in Figma — and teaching front-end fundamentals at ReDI School in Berlin.',
+    chips: ['Figma', 'UX Research', 'Prototyping', 'ReDI School'],
+  },
+];
+---
+
+<section class="journey section--dark" id="journey" data-journey>
+  <div class="blueprint" aria-hidden="true"></div>
+
+  <div class="journey__pin" data-journey-pin>
+    <header class="journey__head wrap">
+      <p class="eyebrow mono">The journey</p>
+      <h2 class="section-title">
+        Kitchen <span class="serif">to</span> code <span class="serif">to</span> AI
+      </h2>
+    </header>
+
+    <div class="journey__viewport">
+      <ol class="journey__track" data-journey-track>
+        {stages.map((s, i) => (
+          <li class="stage" data-stage>
+            <span class="stage__num" aria-hidden="true" data-depth="0.35">
+              0{i + 1}
+            </span>
+            <div class="stage__body">
+              <p class="mono stage__when">{s.when}</p>
+              <h3 class="stage__title">{s.title}</h3>
+              <p class="stage__text">{s.text}</p>
+            </div>
+            <ul class="stage__chips" aria-label="Keywords">
+              {s.chips.map((c, j) => (
+                <li class="chip" data-float style={`--i:${j}`}>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+
+        <li class="stage stage--now" data-stage>
+          <span class="stage__num" aria-hidden="true" data-depth="0.35">
+            05
+          </span>
+          <div class="stage__body">
+            <p class="mono stage__when">Now</p>
+            <h3 class="stage__title stage__title--xl">
+              + <span class="serif">AI</span>
+            </h3>
+            <p class="stage__text">
+              Solid fundamentals, multiplied. AI is the tool that lets me ship complex apps faster and reach
+              further than before.
+            </p>
+            <p class="stage__claim serif">Everything can be programmed.</p>
+          </div>
+          <ul class="stage__chips" aria-label="Keywords">
+            {['LLMs', 'AI agents', 'Automation', 'Rapid prototyping'].map((c, j) => (
+              <li class="chip" data-float style={`--i:${j}`}>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <div class="journey__progress wrap" aria-hidden="true">
+      <span class="mono">2009</span>
+      <span class="journey__bar"><span data-journey-bar></span></span>
+      <span class="mono">Now</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .journey {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .journey__pin {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(2rem, 4vh, 3.5rem);
+    padding-block: 6rem 3rem;
+  }
+
+  .journey__head .section-title {
+    font-size: clamp(2.4rem, 1rem + 5vw, 6rem);
+  }
+
+  .journey__viewport {
+    overflow: visible;
+  }
+
+  .journey__track {
+    display: flex;
+    gap: clamp(2rem, 6vw, 7rem);
+    padding-inline: var(--gutter);
+    width: max-content;
+    counter-reset: stage;
+  }
+
+  .stage {
+    position: relative;
+    width: clamp(20rem, 46vw, 40rem);
+    min-height: 26rem;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 2rem;
+    padding: 2rem 0 0 2rem;
+    border-left: 1px solid var(--line-dark);
+  }
+
+  .stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--mist);
+  }
+
+  .stage__num {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    font-size: clamp(8rem, 18vw, 16rem);
+    font-weight: 800;
+    font-stretch: 75%;
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(176 179 198 / 0.35);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .stage__body {
+    position: relative;
+    align-self: end;
+    max-width: 28rem;
+  }
+
+  .stage__when {
+    color: var(--mist);
+    margin-bottom: 1rem;
+  }
+
+  .stage__title {
+    font-size: clamp(2.2rem, 1.4rem + 2.6vw, 4.2rem);
+    font-weight: 700;
+    font-stretch: 82%;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+  }
+
+  .stage__title--xl {
+    font-size: clamp(4rem, 2rem + 7vw, 9rem);
+  }
+
+  .stage__title .serif {
+    color: var(--mist);
+  }
+
+  .stage__text {
+    color: var(--mist);
+    max-width: 26rem;
+  }
+
+  .stage__claim {
+    margin-top: 1.5rem;
+    font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.6rem);
+    line-height: 1.05;
+  }
+
+  .stage__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: var(--paper);
+  }
+
+  .stage__chips .chip {
+    background: rgb(63 76 154 / 0.35);
+    border-color: rgb(176 179 198 / 0.4);
+  }
+
+  .stage--now {
+    width: clamp(20rem, 60vw, 52rem);
+    padding-right: var(--gutter);
+  }
+
+  .journey__progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--mist);
+    font-size: 0.6rem;
+  }
+
+  .journey__bar {
+    flex: 1;
+    height: 1px;
+    background: var(--line-dark);
+    position: relative;
+  }
+
+  .journey__bar span {
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  /* stacked fallback for narrow screens / reduced motion */
+  @media (max-width: 899px) {
+    .journey__viewport {
+      overflow: visible;
+    }
+    .journey__track {
+      flex-direction: column;
+      width: auto;
+      gap: 4rem;
+    }
+    .stage,
+    .stage--now {
+      width: auto;
+      min-height: 0;
+      padding-right: 0;
+    }
+    .stage__num {
+      font-size: 7rem;
+      top: -1rem;
+    }
+    .journey__progress {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .journey__viewport {
+      overflow-x: auto;
+    }
+    .journey__progress {
+      display: none;
+    }
+  }
+</style>

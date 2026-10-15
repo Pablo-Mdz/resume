@@ -1,0 +1,77 @@
+---
+// Each chunk: [text, style]. Words are split at build time so the scroll scrub can light them up one by one.
+const chunks: [string, 'plain' | 'serif'][] = [
+  ['In 2022 I learned to code — full stack, mobile and UX/UI design. I built apps', 'plain'],
+  ['from zero,', 'serif'],
+  ['understanding how each technology works. (Yes, including how to center a div.) On top of that foundation I now build complex products with AI — a tool that makes us more productive and takes us further.', 'plain'],
+  ['Everything can be programmed.', 'serif'],
+];
+const words = chunks.flatMap(([text, style]) => text.split(' ').map((w) => ({ w, style })));
+---
+
+<section class="manifesto section" id="manifesto">
+  <div class="wrap manifesto__grid">
+    <p class="eyebrow mono">Manifesto</p>
+    <p class="manifesto__text" data-manifesto>
+      {words.map(({ w, style }) => (
+        <span class:list={['word', style === 'serif' && 'serif']}>{w} </span>
+      ))}
+    </p>
+    <p class="manifesto__ask" data-reveal data-fade-up>
+      <span class="serif">What do you need?</span>
+      <a href="#contact" class="btn" data-scroll-link>Let's build it <span class="arrow">↗</span></a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .manifesto__grid {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 2rem;
+  }
+
+  .manifesto__text {
+    font-size: clamp(1.75rem, 1rem + 3.4vw, 4.4rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: pretty;
+  }
+
+  .word {
+    color: var(--ink);
+  }
+
+  :global(html.motion) .word {
+    opacity: 0.16;
+  }
+
+  .word.serif {
+    font-size: 1.12em;
+    color: var(--indigo);
+  }
+
+  .manifesto__ask {
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    margin-top: 1rem;
+  }
+
+  .manifesto__ask .serif {
+    font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    color: var(--indigo);
+  }
+
+  @media (max-width: 900px) {
+    .manifesto__grid {
+      grid-template-columns: 1fr;
+    }
+    .manifesto__ask {
+      grid-column: 1;
+    }
+  }
+</style>

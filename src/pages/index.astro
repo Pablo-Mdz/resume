@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Manifesto from '../components/Manifesto.astro';
+import Journey from '../components/Journey.astro';
+import Projects from '../components/Projects.astro';
+import Resume from '../components/Resume.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Writing from '../components/Writing.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Base>
+  <Nav />
+  <main>
+    <Hero />
+    <Manifesto />
+    <Journey />
+    <Projects />
+    <Resume />
+    <About />
+    <Services />
+    <Writing />
+    <Contact />
+  </main>
+</Base>
+
+<script>
+  import '../scripts/motion';
+</script>

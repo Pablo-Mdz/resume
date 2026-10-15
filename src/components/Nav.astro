@@ -1,0 +1,281 @@
+---
+const links = [
+  { href: '#work', label: 'Work' },
+  { href: '#journey', label: 'Journey' },
+  { href: '#resume', label: 'Resume' },
+  { href: '#about', label: 'About' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="nav" data-nav>
+  <a href="#top" class="nav__logo" aria-label="Pablo Cigoy — back to top">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M15 14h24a12 12 0 0 1 0 24H27v-8H15z" fill="currentColor"></path>
+      <rect x="15" y="38" width="12" height="12" fill="var(--mist)"></rect>
+    </svg>
+  </a>
+
+  <nav aria-label="Main">
+    <ul class="nav__links">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} data-scroll-link>{l.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <a href="#contact" class="nav__status mono" data-scroll-link>
+    <span class="dot" aria-hidden="true"></span> Open to work
+  </a>
+
+  <button class="nav__toggle" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+    <span class="sr-only">Menu</span>
+    <span class="bar"></span><span class="bar"></span>
+  </button>
+</header>
+
+<div class="menu" id="mobile-menu" data-menu hidden>
+  <ul>
+    {links.map((l, i) => (
+      <li>
+        <a href={l.href} data-scroll-link>
+          <span class="mono">0{i + 1}</span>
+          {l.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem;
+    width: min(calc(100% - 2rem), 820px);
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: rgb(26 27 75 / 0.72);
+    color: var(--paper);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgb(176 179 198 / 0.18);
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .nav.is-hidden {
+    transform: translate(-50%, -150%);
+  }
+
+  .nav__logo {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+
+  .nav__logo svg {
+    width: 1.7rem;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .nav__logo:hover svg {
+    transform: rotate(-12deg) scale(1.08);
+  }
+
+  .nav__links {
+    display: flex;
+    gap: 0.15rem;
+  }
+
+  .nav__links a {
+    position: relative;
+    display: block;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+
+  .nav__links a:hover,
+  .nav__links a.is-active {
+    background: rgb(245 246 250 / 0.12);
+  }
+
+  nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    background: var(--indigo);
+    font-size: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: 0 0 0 0 rgb(245 246 250 / 0.7);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    70% { box-shadow: 0 0 0 8px rgb(245 246 250 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(245 246 250 / 0); }
+  }
+
+  .nav__toggle {
+    display: none;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: var(--paper);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .bar {
+    width: 1rem;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .nav__toggle[aria-expanded='true'] .bar:first-of-type {
+    transform: translateY(3.25px) rotate(45deg);
+  }
+
+  .nav__toggle[aria-expanded='true'] .bar:last-of-type {
+    transform: translateY(-3.25px) rotate(-45deg);
+  }
+
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    align-items: flex-end;
+    padding: 6rem var(--gutter) 3rem;
+    background: var(--ink);
+    color: var(--paper);
+    clip-path: circle(0% at calc(100% - 2.5rem) 2.3rem);
+    transition: clip-path 0.7s var(--ease-out);
+  }
+
+  .menu.is-open {
+    clip-path: circle(150% at calc(100% - 2.5rem) 2.3rem);
+  }
+
+  .menu ul {
+    width: 100%;
+  }
+
+  .menu a {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--line-dark);
+    font-size: clamp(2.4rem, 12vw, 4rem);
+    font-weight: 700;
+    font-stretch: 78%;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .menu .mono {
+    color: var(--mist);
+  }
+
+  @media (max-width: 760px) {
+    nav,
+    .nav__status {
+      display: none;
+    }
+    .nav {
+      justify-content: space-between;
+      width: calc(100% - 2rem);
+    }
+    .nav__toggle {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('[data-nav]')!;
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
+  const menu = document.querySelector<HTMLElement>('[data-menu]')!;
+
+  const setMenu = (open: boolean) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) {
+      menu.hidden = false;
+      requestAnimationFrame(() => menu.classList.add('is-open'));
+    } else {
+      menu.classList.remove('is-open');
+      setTimeout(() => {
+        if (!menu.classList.contains('is-open')) menu.hidden = true;
+      }, 700);
+    }
+    document.documentElement.classList.toggle('menu-open', open);
+  };
+
+  toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+
+  // hide on scroll down, show on scroll up
+  let lastY = window.scrollY;
+  window.addEventListener(
+    'scroll',
+    () => {
+      const y = window.scrollY;
+      const menuOpen = toggle.getAttribute('aria-expanded') === 'true';
+      nav.classList.toggle('is-hidden', !menuOpen && y > lastY && y > 300);
+      lastY = y;
+    },
+    { passive: true },
+  );
+
+  // active link
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.nav__links a')];
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((l) => l.classList.toggle('is-active', l.hash === `#${entry.target.id}`));
+      });
+    },
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  links.forEach((l) => {
+    const target = document.querySelector(l.hash);
+    if (target) observer.observe(target);
+  });
+</script>

@@ -1,0 +1,122 @@
+---
+import { experience, education, type TimelineItem } from '../data/site';
+
+const columns: { label: string; items: TimelineItem[] }[] = [
+  { label: 'Experience', items: experience },
+  { label: 'Education', items: education },
+];
+---
+
+<section class="resume section" id="resume">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow mono">Resume</p>
+        <h2 class="section-title" data-reveal data-split>
+          Track <span class="serif">record</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="resume__cols">
+      {columns.map((col) => (
+        <div class="timeline" data-timeline>
+          <h3 class="timeline__label mono">{col.label}</h3>
+          <span class="timeline__line" aria-hidden="true" data-timeline-line></span>
+          <ol>
+            {col.items.map((item) => (
+              <li class="entry" data-reveal data-fade-up>
+                <p class="entry__date mono">{item.date}</p>
+                <h4 class="entry__title">{item.title}</h4>
+                <p class="entry__place">{item.place}</p>
+                <p class="entry__text">{item.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .resume__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline__label {
+    color: var(--indigo);
+    margin-bottom: 2rem;
+  }
+
+  .timeline__line {
+    position: absolute;
+    left: 0;
+    top: 0.3rem;
+    bottom: 0;
+    width: 1px;
+    background: var(--ink);
+    transform-origin: top;
+  }
+
+  .timeline ol {
+    display: grid;
+    gap: 2.75rem;
+  }
+
+  .entry {
+    position: relative;
+  }
+
+  .entry::before {
+    content: '';
+    position: absolute;
+    left: calc(-2rem - 4px);
+    top: 0.25rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+  }
+
+  .entry__date {
+    color: var(--slate);
+    font-size: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .entry__title {
+    font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+    font-weight: 650;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+  }
+
+  .entry__place {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--indigo);
+    margin: 0.3rem 0 0.7rem;
+  }
+
+  .entry__text {
+    color: var(--slate);
+    max-width: 34rem;
+  }
+
+  @media (max-width: 860px) {
+    .resume__cols {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
+</style>
