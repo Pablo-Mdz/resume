@@ -26,4 +26,5 @@ The filter counts update automatically. The "AI — landing soon" placeholder ca
 
 ## Deploy
 
-Any static host works. Build command `npm run build`, output directory `dist`.
+Any static host works. Build command `npm run build`, output directory `dist` (Node 22).
+`netlify.toml` already sets this up for Netlify.
