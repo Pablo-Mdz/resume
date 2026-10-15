@@ -109,13 +109,12 @@ if (!reduceMotion) {
     )
     .from('[data-hero-fade]', { autoAlpha: 0, y: 24, duration: 1, stagger: 0.08 }, 0.6);
 
-  /* hero scroll-out: the name splits apart, the photo drifts up */
+  /* hero scroll-out: copy drifts up and fades, the photo lags behind */
   const hero = $('[data-hero]');
   if (hero) {
     const out = { trigger: hero, start: 'top top', end: 'bottom top', scrub: true };
-    gsap.to('.hero__row--a > span', { xPercent: -18, ease: 'none', scrollTrigger: out });
-    gsap.to('.hero__row--b > span', { xPercent: 18, ease: 'none', scrollTrigger: out });
-    gsap.to('[data-hero-photo]', { yPercent: -30, scale: 0.92, ease: 'none', scrollTrigger: out });
+    gsap.to('.hero__copy', { yPercent: -18, autoAlpha: 0.2, ease: 'none', scrollTrigger: out });
+    gsap.to('[data-hero-photo]', { yPercent: -10, scale: 0.95, ease: 'none', scrollTrigger: out });
   }
 
   /* "yes, I can center a div" */
