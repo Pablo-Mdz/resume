@@ -14,6 +14,7 @@ import personalTrainer from '../assets/projects/personal-trainer.webp';
 import caminoVivo from '../assets/projects/camino-vivo.webp';
 import dresscode from '../assets/projects/dresscode.webp';
 import padelCrew from '../assets/projects/4padel-crew.webp';
+import padelTeamChallenge from '../assets/projects/padel-team-challenge.webp';
 import padelAmericano from '../assets/projects/padel-americano.webp';
 import saveOliver from '../assets/projects/save-oliver.webp';
 import trucoCounter from '../assets/projects/truco-counter.webp';
@@ -60,6 +61,16 @@ export const projects: Project[] = [
     summary:
       'Internal tool my team at the club uses every day to answer customer email. It syncs the shared Gmail inbox, translates each message into German, English or Spanish and drafts three replies grounded in a staff-editable knowledge base. Staff edit in any language and the reply goes out in the customer’s. Weekly PDF reports are generated automatically.',
     image: padelCrew,
+  },
+  {
+    title: 'Padel Team Challenge',
+    kind: 'Live tournament scoring · 4PADEL Berlin',
+    categories: ['web', 'uxui'],
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Vitest', 'PWA', 'BroadcastChannel API'],
+    summary:
+      'A tournament app I built for team events at the club: one tablet at reception enters results while players and the club TV follow live standings. Offline-first with no backend — a pure TypeScript ranking engine with tie-breakers, local-first state and cross-screen sync, covered by 27 unit tests.',
+    image: padelTeamChallenge,
+    href: 'https://claude.ai/artifact/2mq9ZsXNVi99zRDX7GD8yj',
   },
   {
     title: 'Alfayata Masónica',
@@ -211,7 +222,7 @@ export const experience: TimelineItem[] = [
     date: '2025 — Present',
     title: 'Deputy Manager',
     place: '4PADEL Berlin Reinickendorf',
-    text: 'Operational management of a six-court indoor padel club: staff management and shift planning, conflict resolution, and organising corporate and private events. I handle customer communication in German, English and Spanish — bookings, cancellations, refunds and partner programmes such as Urban Sports Club and Hansefit — and build AI tools for the club’s daily work, like an assistant that drafts customer replies from the club’s own policies.',
+    text: 'Operational management of a six-court indoor padel club: staff management and shift planning, conflict resolution, and organising corporate and private events. I handle customer communication in German, English and Spanish — bookings, cancellations and refunds — and build AI tools for the club’s daily work, like an assistant that drafts customer replies from the club’s own policies.',
   },
   {
     date: 'May 2023 — Present',
@@ -238,7 +249,7 @@ export const education: TimelineItem[] = [
     date: 'Aug 2023 — Aug 2024',
     title: 'Mobile Developer Weiterbildung (Android / iOS)',
     place: 'Syntax Institut',
-    text: 'One-year intensive training in mobile application development with hands-on projects and collaborative learning on both platforms.',
+    text: 'One-year intensive training in mobile application development with hands-on projects on both platforms, including a four-month UX/UI module: design fundamentals, Figma, wireframing and layout.',
   },
   {
     date: 'Sep — Dec 2022',
