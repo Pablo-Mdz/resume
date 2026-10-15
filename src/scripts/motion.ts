@@ -285,7 +285,7 @@ if (!reduceMotion) {
             autoAlpha: 1,
             y: 0,
             ease: 'none',
-            scrollTrigger: { containerAnimation: scroll, trigger: stage, start: 'left 85%', end: 'left 35%', scrub: true },
+            scrollTrigger: { containerAnimation: scroll, trigger: stage, start: 'left 100%', end: 'left 74%', scrub: true },
           },
         );
       }
@@ -302,7 +302,7 @@ if (!reduceMotion) {
               containerAnimation: scroll,
               trigger: stage,
               start: 'left right',
-              end: 'left 30%',
+              end: 'left 76%',
               scrub: true,
             },
           },
