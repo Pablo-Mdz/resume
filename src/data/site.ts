@@ -9,6 +9,7 @@ import notitasNadja from '../assets/projects/notitas-nadja.webp';
 import beChef from '../assets/projects/be-chef.webp';
 import saborLatino from '../assets/projects/sabor-latino.webp';
 import alfayataMasonica from '../assets/projects/alfayata-masonica.webp';
+import trabibi from '../assets/projects/trabibi.webp';
 import padelAmericano from '../assets/projects/padel-americano.webp';
 import saveOliver from '../assets/projects/save-oliver.webp';
 import trucoCounter from '../assets/projects/truco-counter.webp';
@@ -56,6 +57,16 @@ export const projects: Project[] = [
       'Catalog and admin panel for an artisan Masonic tailor. A multi-model AI pipeline turns phone snapshots into studio-quality product photos: Claude plans the shot, Gemini renders it, and Claude reviews the result against the original before it goes live.',
     image: alfayataMasonica,
     href: 'https://alfayatamasonicamdz.vercel.app/',
+  },
+  {
+    title: 'Trabibi',
+    kind: 'AI travel interpreter · Egyptian Arabic',
+    categories: ['ai', 'web'],
+    stack: ['React', 'Vite', 'Tailwind', 'Claude API', 'Web Speech API'],
+    summary:
+      'A pocket interpreter for travelling in Egypt. Speak Spanish and get Egyptian Arabic in script, phonetics and audio; let the other person answer in Arabic and read it back in Spanish. Includes a turn-based conversation mode and an offline phrasebook.',
+    image: trabibi,
+    href: 'https://github.com/Pablo-Mdz/trabibi',
   },
   {
     title: 'Catering Manager',
