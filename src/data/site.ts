@@ -13,6 +13,7 @@ import trabibi from '../assets/projects/trabibi.webp';
 import personalTrainer from '../assets/projects/personal-trainer.webp';
 import caminoVivo from '../assets/projects/camino-vivo.webp';
 import dresscode from '../assets/projects/dresscode.webp';
+import padelCrew from '../assets/projects/4padel-crew.webp';
 import padelAmericano from '../assets/projects/padel-americano.webp';
 import saveOliver from '../assets/projects/save-oliver.webp';
 import trucoCounter from '../assets/projects/truco-counter.webp';
@@ -51,6 +52,15 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    title: '4PADEL Crew',
+    kind: 'AI inbox assistant · padel club',
+    categories: ['ai', 'web', 'uxui'],
+    stack: ['Next.js', 'TypeScript', 'Claude API', 'Supabase', 'Gmail API', 'Google Drive API', 'Vercel'],
+    summary:
+      'Internal tool my team at the club uses every day to answer customer email. It syncs the shared Gmail inbox, translates each message into German, English or Spanish and drafts three replies grounded in a staff-editable knowledge base. Staff edit in any language and the reply goes out in the customer’s. Weekly PDF reports are generated automatically.',
+    image: padelCrew,
+  },
   {
     title: 'Alfayata Masónica',
     kind: 'AI-powered catalog & CMS · returning client',
