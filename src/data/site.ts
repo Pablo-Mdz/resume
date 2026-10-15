@@ -11,6 +11,7 @@ import saborLatino from '../assets/projects/sabor-latino.webp';
 import alfayataMasonica from '../assets/projects/alfayata-masonica.webp';
 import trabibi from '../assets/projects/trabibi.webp';
 import personalTrainer from '../assets/projects/personal-trainer.webp';
+import caminoVivo from '../assets/projects/camino-vivo.webp';
 import padelAmericano from '../assets/projects/padel-americano.webp';
 import saveOliver from '../assets/projects/save-oliver.webp';
 import trucoCounter from '../assets/projects/truco-counter.webp';
@@ -77,6 +78,16 @@ export const projects: Project[] = [
     summary:
       'A mobile-first gym logger I use daily. One tap logs a whole exercise, an in-progress session survives navigation, and a Claude-powered coach answers using my recent training history. Each Google account’s data is isolated with Postgres row-level security.',
     image: personalTrainer,
+  },
+  {
+    title: 'Camino Vivo',
+    kind: 'Trilingual travel site · AI recipe CMS',
+    categories: ['ai', 'web'],
+    stack: ['React', 'TypeScript', 'Firebase', 'Netlify Functions', 'Claude API', 'Puppeteer', 'i18next'],
+    summary:
+      'My travel and cooking site with a custom admin CMS in Spanish, English and German. Photos of handwritten recipe notebooks go to a token-verified serverless function where Claude vision fills a strict JSON schema, returning an editable recipe. Prerendered for SEO.',
+    image: caminoVivo,
+    href: 'https://caminovivo.es',
   },
   {
     title: 'Catering Manager',
