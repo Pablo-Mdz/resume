@@ -12,6 +12,7 @@ import alfayataMasonica from '../assets/projects/alfayata-masonica.webp';
 import trabibi from '../assets/projects/trabibi.webp';
 import personalTrainer from '../assets/projects/personal-trainer.webp';
 import caminoVivo from '../assets/projects/camino-vivo.webp';
+import dresscode from '../assets/projects/dresscode.webp';
 import padelAmericano from '../assets/projects/padel-americano.webp';
 import saveOliver from '../assets/projects/save-oliver.webp';
 import trucoCounter from '../assets/projects/truco-counter.webp';
@@ -88,6 +89,16 @@ export const projects: Project[] = [
       'My travel and cooking site with a custom admin CMS in Spanish, English and German. Photos of handwritten recipe notebooks go to a token-verified serverless function where Claude vision fills a strict JSON schema, returning an editable recipe. Prerendered for SEO.',
     image: caminoVivo,
     href: 'https://caminovivo.es',
+  },
+  {
+    title: 'DressCode',
+    kind: 'AI personal stylist · wardrobe PWA',
+    categories: ['ai', 'web', 'uxui'],
+    stack: ['React', 'TypeScript', 'Firebase', 'Cloud Functions', 'Claude API', 'PWA', 'ONNX Runtime Web'],
+    summary:
+      'An app I built to organise my wardrobe: photograph each garment once and get outfits for any occasion, trip plans with live weather, and a buy-or-skip verdict while shopping. The styling runs on a fashion-expert skill I wrote, and outputs only reference garments I actually own.',
+    image: dresscode,
+    href: 'https://github.com/Pablo-Mdz/DressCode',
   },
   {
     title: 'Catering Manager',
