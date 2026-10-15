@@ -10,6 +10,7 @@ import beChef from '../assets/projects/be-chef.webp';
 import saborLatino from '../assets/projects/sabor-latino.webp';
 import alfayataMasonica from '../assets/projects/alfayata-masonica.webp';
 import trabibi from '../assets/projects/trabibi.webp';
+import personalTrainer from '../assets/projects/personal-trainer.webp';
 import padelAmericano from '../assets/projects/padel-americano.webp';
 import saveOliver from '../assets/projects/save-oliver.webp';
 import trucoCounter from '../assets/projects/truco-counter.webp';
@@ -67,6 +68,16 @@ export const projects: Project[] = [
       'A pocket interpreter for travelling in Egypt. Speak Spanish and get Egyptian Arabic in script, phonetics and audio; let the other person answer in Arabic and read it back in Spanish. Includes a turn-based conversation mode and an offline phrasebook.',
     image: trabibi,
     href: 'https://github.com/Pablo-Mdz/trabibi',
+  },
+  {
+    title: 'Personal Trainer',
+    kind: 'Gym tracker with an AI coach · mobile-first',
+    categories: ['ai', 'web'],
+    stack: ['React', 'TypeScript', 'Supabase', 'Edge Functions', 'Claude API', 'Recharts', 'Tailwind'],
+    summary:
+      'The app I use for my own training: guided sessions with an A/B/C routine rotation, last-used weights, exercise guides and progress charts. An AI coach answers training and nutrition questions using my recent sessions as context, through a secured Supabase Edge Function.',
+    image: personalTrainer,
+    href: 'https://github.com/Pablo-Mdz/personal-trainer',
   },
   {
     title: 'Catering Manager',
