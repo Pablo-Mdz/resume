@@ -184,7 +184,7 @@ export const education: TimelineItem[] = [
     text: 'One-year intensive training in mobile application development with hands-on projects and collaborative learning on both platforms.',
   },
   {
-    date: 'Sep 2022 — Dec 2024',
+    date: 'Sep — Dec 2022',
     title: 'Full Stack Web Development Bootcamp',
     place: 'Ironhack',
     text: 'Full-stack development with the MERN stack (MongoDB, Express.js, React, Node.js) through real-world, collaborative projects.',
@@ -213,37 +213,37 @@ export const services = [
     text: 'Visually clear, user-friendly interfaces grounded in research — so people enjoy using the product and find it easy to navigate.',
     tags: ['Figma', 'Research', 'Prototyping'],
   },
+  {
+    title: 'AI-Powered Applications',
+    text: 'Custom applications built with AI, shaped to each need — from intelligent features to automated workflows. Solid engineering fundamentals, delivered faster with AI tools.',
+    tags: ['LLM integration', 'Automation', 'AI agents', 'Rapid prototyping'],
+  },
 ];
 
 export const articles = [
   {
     title: 'Catering Manager — an event management tool built with SwiftUI',
     meta: 'Swift · Firebase · REST API · MVVM',
-    image: cateringManager,
     href: projects[0].href!,
   },
   {
     title: 'Mate Mundo — a yerba mate marketplace app for iOS',
     meta: 'Swift · Firebase · Xcode · MVVM',
-    image: mateMundo,
     href: projects[1].href!,
   },
   {
     title: 'Case study: Abenteuer Kita — communication in early childhood education',
     meta: 'Kotlin · Android Studio · Figma · MVVM',
-    image: kitaAdventure,
     href: projects[2].href!,
   },
   {
     title: 'Project Resources Management — a UX/UI design project',
     meta: 'UX & UI research with Figma',
-    image: prm,
     href: projects[4].href!,
   },
   {
     title: 'Notitas von Nadja — UX/UI comparison between Android and iOS',
     meta: 'Platform design guidelines',
-    image: notitasNadja,
     href: projects[5].href!,
   },
 ];

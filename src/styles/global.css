@@ -1,4 +1,4 @@
-@import '@fontsource-variable/bricolage-grotesque/standard.css';
+@import '@fontsource-variable/archivo/wght.css';
 @import '@fontsource/instrument-serif/400-italic.css';
 @import '@fontsource/martian-mono/400.css';
 @import 'lenis/dist/lenis.css';
@@ -14,7 +14,7 @@
   --line-dark: rgb(176 179 198 / 0.18);
   --line-light: rgb(26 27 75 / 0.12);
 
-  --font-sans: 'Bricolage Grotesque Variable', 'Helvetica Neue', sans-serif;
+  --font-sans: 'Archivo Variable', 'Helvetica Neue', sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'Martian Mono', ui-monospace, monospace;
 
@@ -135,12 +135,10 @@ ol {
 }
 
 .section-title {
-  font-size: clamp(2.6rem, 1.4rem + 6vw, 7.5rem);
-  font-weight: 700;
-  font-stretch: 78%;
-  line-height: 0.9;
+  font-size: clamp(2.4rem, 1.4rem + 4vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1;
   letter-spacing: -0.035em;
-  text-transform: uppercase;
 }
 
 .section-title .serif {

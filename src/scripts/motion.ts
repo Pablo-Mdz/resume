@@ -96,7 +96,7 @@ if (!reduceMotion) {
     .from('[data-hero-line]', { yPercent: 110, autoAlpha: 0, duration: 1.4, stagger: 0.12 })
     .from(
       '[data-hero-photo]',
-      { clipPath: 'inset(100% 0% 0% 0%)', autoAlpha: 0, rotate: 6, duration: 1.4 },
+      { clipPath: 'inset(100% 0% 0% 0%)', autoAlpha: 0, duration: 1.4 },
       0.25,
     )
     .from('[data-hero-fade]', { autoAlpha: 0, y: 24, duration: 1, stagger: 0.08 }, 0.6);
@@ -107,7 +107,7 @@ if (!reduceMotion) {
     const out = { trigger: hero, start: 'top top', end: 'bottom top', scrub: true };
     gsap.to('.hero__row--a > span', { xPercent: -18, ease: 'none', scrollTrigger: out });
     gsap.to('.hero__row--b > span', { xPercent: 18, ease: 'none', scrollTrigger: out });
-    gsap.to('[data-hero-photo]', { yPercent: -35, rotate: 4, scale: 0.9, ease: 'none', scrollTrigger: out });
+    gsap.to('[data-hero-photo]', { yPercent: -30, scale: 0.92, ease: 'none', scrollTrigger: out });
   }
 
   /* "yes, I can center a div" */
@@ -273,14 +273,12 @@ if (!reduceMotion) {
       }
 
       chips.forEach((chip, i) => {
-        const dir = i % 2 ? 1 : -1;
         gsap.fromTo(
           chip,
-          { x: 140 + i * 50, y: dir * (50 + i * 18), rotate: dir * 14 },
+          { x: 120 + i * 40, autoAlpha: 0 },
           {
             x: 0,
-            y: 0,
-            rotate: 0,
+            autoAlpha: 1,
             ease: 'none',
             scrollTrigger: {
               containerAnimation: scroll,
@@ -349,27 +347,6 @@ if (!reduceMotion) {
       el.addEventListener('pointerleave', hideCursor);
     });
 
-    // floating preview over Medium articles
-    const preview = $('[data-preview-float]');
-    if (preview) {
-      const imgs = $$('[data-preview-img]', preview);
-      const px = gsap.quickTo(preview, 'x', { duration: 0.6, ease: 'power3.out' });
-      const py = gsap.quickTo(preview, 'y', { duration: 0.6, ease: 'power3.out' });
-      gsap.set(preview, { xPercent: -50, yPercent: -50, scale: 0.6 });
-      window.addEventListener('pointermove', (e) => {
-        px(e.clientX + 40);
-        py(e.clientY);
-      });
-      $$<HTMLAnchorElement>('[data-preview]').forEach((link) => {
-        link.addEventListener('pointerenter', () => {
-          imgs.forEach((img, i) => img.classList.toggle('is-active', String(i) === link.dataset.preview));
-          gsap.to(preview, { autoAlpha: 1, scale: 1, rotate: -3, duration: 0.5, ease: 'expo.out' });
-        });
-        link.addEventListener('pointerleave', () =>
-          gsap.to(preview, { autoAlpha: 0, scale: 0.6, rotate: 0, duration: 0.3 }),
-        );
-      });
-    }
   }
 
   document.fonts?.ready.then(() => ScrollTrigger.refresh());

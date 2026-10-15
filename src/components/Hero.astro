@@ -33,7 +33,6 @@ import portrait from '../assets/photos/pablo-portrait.webp';
           fetchpriority="high"
         />
       </div>
-      <figcaption class="mono">fig. 01 — the developer</figcaption>
     </figure>
 
     <div class="hero__bottom">
@@ -84,12 +83,10 @@ import portrait from '../assets/photos/pablo-portrait.webp';
 
   .hero__name {
     align-self: center;
-    font-size: clamp(5.5rem, 23vw, 24rem);
-    font-weight: 800;
-    font-stretch: 75%;
-    line-height: 0.8;
-    letter-spacing: -0.045em;
-    text-transform: uppercase;
+    font-size: clamp(4.5rem, 16vw, 17rem);
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
     position: relative;
     z-index: 2;
     color: var(--paper);
@@ -107,7 +104,7 @@ import portrait from '../assets/photos/pablo-portrait.webp';
     left: 50%;
     width: clamp(10rem, 22vw, 21rem);
     margin: 0;
-    transform: translate(-30%, -46%) rotate(-4deg);
+    transform: translate(-30%, -46%);
   }
 
   .hero__photo-inner {
@@ -119,30 +116,11 @@ import portrait from '../assets/photos/pablo-portrait.webp';
     box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.6);
   }
 
-  .hero__photo-inner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--indigo);
-    mix-blend-mode: color;
-    transition: opacity 0.8s var(--ease-out);
-  }
-
-  .hero__photo:hover .hero__photo-inner::after {
-    opacity: 0;
-  }
-
   .hero__photo img {
     width: 100%;
     height: 115%;
     object-fit: cover;
     object-position: 50% 20%;
-  }
-
-  .hero__photo figcaption {
-    margin-top: 0.6rem;
-    font-size: 0.55rem;
-    color: var(--mist);
   }
 
   .hero__bottom {
@@ -258,12 +236,12 @@ import portrait from '../assets/photos/pablo-portrait.webp';
     .hero__name {
       align-self: start;
       margin-top: 2rem;
-      font-size: 29vw;
+      font-size: 21vw;
     }
     .hero__photo {
       width: 46vw;
       top: 56%;
-      transform: translate(-50%, -50%) rotate(-4deg);
+      transform: translate(-50%, -50%);
     }
     .hero__meta span:last-child {
       display: none;

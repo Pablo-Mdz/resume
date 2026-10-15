@@ -34,7 +34,7 @@ const stages = [
     <header class="journey__head wrap">
       <p class="eyebrow mono">The journey</p>
       <h2 class="section-title">
-        Kitchen <span class="serif">to</span> code <span class="serif">to</span> AI
+        From kitchen to code to AI
       </h2>
     </header>
 
@@ -87,9 +87,9 @@ const stages = [
     </div>
 
     <div class="journey__progress wrap" aria-hidden="true">
-      <span class="mono">2009</span>
+      <span class="mono">2009 · Chef</span>
       <span class="journey__bar"><span data-journey-bar></span></span>
-      <span class="mono">Now</span>
+      <span class="mono">Now · Developer + AI</span>
     </div>
   </div>
 </section>
@@ -106,12 +106,16 @@ const stages = [
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: clamp(2rem, 4vh, 3.5rem);
-    padding-block: 6rem 3rem;
+    gap: clamp(1.25rem, 4vh, 3.5rem);
+    padding-block: clamp(5rem, 11vh, 7rem) clamp(1.5rem, 4vh, 3rem);
+  }
+
+  .journey__head .eyebrow {
+    margin-bottom: clamp(0.5rem, 1.5vh, 1.25rem);
   }
 
   .journey__head .section-title {
-    font-size: clamp(2.4rem, 1rem + 5vw, 6rem);
+    font-size: clamp(2rem, min(1rem + 4vw, 8vh), 5rem);
   }
 
   .journey__viewport {
@@ -129,11 +133,11 @@ const stages = [
   .stage {
     position: relative;
     width: clamp(20rem, 46vw, 40rem);
-    min-height: 26rem;
+    min-height: min(26rem, 48vh);
     display: grid;
     grid-template-rows: 1fr auto;
-    gap: 2rem;
-    padding: 2rem 0 0 2rem;
+    gap: clamp(1rem, 3vh, 2rem);
+    padding: clamp(1rem, 3vh, 2rem) 0 0.5rem 2rem;
     border-left: 1px solid var(--line-dark);
   }
 
@@ -152,9 +156,8 @@ const stages = [
     position: absolute;
     top: -2rem;
     right: 0;
-    font-size: clamp(8rem, 18vw, 16rem);
-    font-weight: 800;
-    font-stretch: 75%;
+    font-size: clamp(6rem, min(18vw, 26vh), 16rem);
+    font-weight: 600;
     line-height: 0.8;
     color: transparent;
     -webkit-text-stroke: 1px rgb(176 179 198 / 0.35);
@@ -170,20 +173,19 @@ const stages = [
 
   .stage__when {
     color: var(--mist);
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
   }
 
   .stage__title {
-    font-size: clamp(2.2rem, 1.4rem + 2.6vw, 4.2rem);
-    font-weight: 700;
-    font-stretch: 82%;
-    line-height: 0.95;
+    font-size: clamp(1.9rem, min(1.4rem + 2.4vw, 7vh), 3.8rem);
+    font-weight: 600;
+    line-height: 1.02;
     letter-spacing: -0.03em;
-    margin-bottom: 1.2rem;
+    margin-bottom: clamp(0.6rem, 2vh, 1.2rem);
   }
 
   .stage__title--xl {
-    font-size: clamp(4rem, 2rem + 7vw, 9rem);
+    font-size: clamp(3.5rem, min(2rem + 6vw, 15vh), 8rem);
   }
 
   .stage__title .serif {
@@ -195,9 +197,16 @@ const stages = [
     max-width: 26rem;
   }
 
+  @media (max-height: 760px) and (min-width: 900px) {
+    .stage__text {
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+  }
+
   .stage__claim {
-    margin-top: 1.5rem;
-    font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.6rem);
+    margin-top: clamp(0.75rem, 2.5vh, 1.5rem);
+    font-size: clamp(1.4rem, min(1.2rem + 1.4vw, 5vh), 2.6rem);
     line-height: 1.05;
   }
 
