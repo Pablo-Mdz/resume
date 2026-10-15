@@ -81,7 +81,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Camino Vivo',
-    kind: 'Trilingual travel site · AI recipe CMS',
+    kind: 'Personal journey · travels & recipes',
     categories: ['ai', 'web'],
     stack: ['React', 'TypeScript', 'Firebase', 'Netlify Functions', 'Claude API', 'Puppeteer', 'i18next'],
     summary:
