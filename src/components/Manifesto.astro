@@ -19,7 +19,7 @@ const words = chunks.flatMap(([text, style]) => text.split(' ').map((w) => ({ w,
     </p>
     <p class="manifesto__ask" data-reveal data-fade-up>
       <span class="serif">What do you need?</span>
-      <a href="#contact" class="btn" data-scroll-link>Let’s build it <span class="arrow">↗</span></a>
+      <a href="#contact" class="btn" data-scroll-link>Get in touch <span class="arrow">↗</span></a>
     </p>
   </div>
 </section>
@@ -32,10 +32,11 @@ const words = chunks.flatMap(([text, style]) => text.split(' ').map((w) => ({ w,
   }
 
   .manifesto__text {
-    font-size: clamp(1.75rem, 1rem + 3.4vw, 4.4rem);
+    font-size: clamp(1.35rem, 1rem + 1.5vw, 2.5rem);
     font-weight: 500;
-    line-height: 1.08;
-    letter-spacing: -0.025em;
+    line-height: 1.2;
+    max-width: 46rem;
+    letter-spacing: -0.015em;
     text-wrap: pretty;
   }
 
@@ -62,7 +63,7 @@ const words = chunks.flatMap(([text, style]) => text.split(' ').map((w) => ({ w,
   }
 
   .manifesto__ask .serif {
-    font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.4rem);
     color: var(--indigo);
   }
 

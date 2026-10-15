@@ -5,6 +5,8 @@ import { projects, categories, type Category } from '../data/site';
 const count = (id: string) =>
   id === 'all' ? projects.length : projects.filter((p) => p.categories.includes(id as Category)).length;
 const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? id;
+// Under "All", only the first rows show until the visitor asks for the rest.
+const FEATURED = 9;
 ---
 
 <section class="work section" id="work">
@@ -31,7 +33,7 @@ const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? i
       {projects.map((p, i) => {
         const Tag = p.href ? 'a' : 'div';
         return (
-          <li class="card" data-card data-categories={p.categories.join(' ')}>
+          <li class="card" data-card data-categories={p.categories.join(' ')} data-extra={i >= FEATURED ? '' : undefined}>
             <Tag
               class="card__link"
               {...(p.href ? { href: p.href, target: '_blank', rel: 'noopener' } : {})}
@@ -75,6 +77,14 @@ const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? i
         </div>
       </li>
     </ul>
+
+    {projects.length > FEATURED && (
+      <div class="more">
+        <button class="btn more__btn" data-show-all hidden>
+          Show all {projects.length} projects <span class="arrow" aria-hidden="true">↓</span>
+        </button>
+      </div>
+    )}
   </div>
 </section>
 
@@ -226,6 +236,12 @@ const labelFor = (id: string) => categories.find((c) => c.id === id)?.label ?? i
     color: var(--slate);
     font-size: 0.92rem;
     line-height: 1.5;
+  }
+
+  .more {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
   }
 
   .card__stack {

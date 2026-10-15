@@ -55,12 +55,19 @@ if (grid) {
     });
   };
 
+  const showAll = $<HTMLButtonElement>('[data-show-all]');
+  let expanded = false;
+  let current = 'all';
+
   const isVisible = (card: HTMLElement, filter: string) => {
     if (card.matches('.card--soon')) return filter === 'ai';
-    return filter === 'all' || (card.dataset.categories ?? '').split(' ').includes(filter);
+    if (filter === 'all') return expanded || !('extra' in card.dataset);
+    return (card.dataset.categories ?? '').split(' ').includes(filter);
   };
 
   const setFilter = (filter: string, animate: boolean) => {
+    current = filter;
+    if (showAll) showAll.hidden = filter !== 'all' || expanded;
     buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === filter)));
     const state = animate && !reduceMotion ? Flip.getState(cards) : null;
 
@@ -87,9 +94,13 @@ if (grid) {
   };
 
   buttons.forEach((btn) => btn.addEventListener('click', () => setFilter(btn.dataset.filter!, true)));
+  showAll?.addEventListener('click', () => {
+    expanded = true;
+    setFilter(current, true);
+  });
 
   const initial = new URLSearchParams(window.location.search).get('filter');
-  if (initial && buttons.some((b) => b.dataset.filter === initial)) setFilter(initial, false);
+  setFilter(initial && buttons.some((b) => b.dataset.filter === initial) ? initial : 'all', false);
 
   applyOffsets();
   window.addEventListener('resize', applyOffsets);

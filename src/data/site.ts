@@ -63,7 +63,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Alfayata Masónica',
-    kind: 'AI-powered catalog & CMS · returning client',
+    kind: 'AI-powered catalog & CMS',
     categories: ['ai', 'web'],
     stack: ['React 19', 'Vite', 'Firebase', 'Vercel Functions', 'Claude API', 'Gemini', 'Tailwind'],
     summary:
@@ -212,12 +212,6 @@ export const experience: TimelineItem[] = [
     title: 'Deputy Manager',
     place: '4PADEL Berlin Reinickendorf',
     text: 'Operational management of a six-court indoor padel club: staff management and shift planning, conflict resolution, and organising corporate and private events. I handle customer communication in German, English and Spanish — bookings, cancellations, refunds and partner programmes such as Urban Sports Club and Hansefit — and build AI tools for the club’s daily work, like an assistant that drafts customer replies from the club’s own policies.',
-  },
-  {
-    date: 'Feb 2023 — Present',
-    title: 'Freelance Software Developer',
-    place: 'Self-Employed',
-    text: 'Independently developed and deployed custom web and mobile applications, focusing on scalable solutions for diverse client needs. Enhanced client satisfaction through proactive communication, iterative feedback loops, and continuous improvement initiatives.',
   },
   {
     date: 'May 2023 — Present',
