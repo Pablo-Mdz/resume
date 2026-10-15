@@ -60,28 +60,36 @@ if (grid) {
     return filter === 'all' || card.dataset.category === filter;
   };
 
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter!;
-      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      const state = reduceMotion ? null : Flip.getState(cards);
+  const setFilter = (filter: string, animate: boolean) => {
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === filter)));
+    const state = animate && !reduceMotion ? Flip.getState(cards) : null;
 
-      cards.forEach((card) => (card.hidden = !isVisible(card, filter)));
-      applyOffsets();
+    cards.forEach((card) => (card.hidden = !isVisible(card, filter)));
+    applyOffsets();
 
-      if (!state) return ScrollTrigger.refresh();
-      Flip.from(state, {
-        duration: 0.75,
-        ease: 'power3.inOut',
-        absolute: true,
-        stagger: 0.02,
-        onEnter: (els) =>
-          gsap.fromTo(els, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.7, delay: 0.2 }),
-        onLeave: (els) => gsap.to(els, { autoAlpha: 0, scale: 0.92, duration: 0.4 }),
-        onComplete: () => ScrollTrigger.refresh(),
-      });
+    // keep the filter in the URL so it can be shared and survives reloads
+    const url = new URL(window.location.href);
+    if (filter === 'all') url.searchParams.delete('filter');
+    else url.searchParams.set('filter', filter);
+    history.replaceState(null, '', url);
+
+    if (!state) return ScrollTrigger.refresh();
+    Flip.from(state, {
+      duration: 0.75,
+      ease: 'power3.inOut',
+      absolute: true,
+      stagger: 0.02,
+      onEnter: (els) =>
+        gsap.fromTo(els, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.7, delay: 0.2 }),
+      onLeave: (els) => gsap.to(els, { autoAlpha: 0, scale: 0.92, duration: 0.4 }),
+      onComplete: () => ScrollTrigger.refresh(),
     });
-  });
+  };
+
+  buttons.forEach((btn) => btn.addEventListener('click', () => setFilter(btn.dataset.filter!, true)));
+
+  const initial = new URLSearchParams(window.location.search).get('filter');
+  if (initial && buttons.some((b) => b.dataset.filter === initial)) setFilter(initial, false);
 
   applyOffsets();
   window.addEventListener('resize', applyOffsets);
@@ -120,7 +128,7 @@ if (!reduceMotion) {
     const dx = (box.clientWidth - dot.offsetWidth) / 2 - pad;
     const dy = (box.clientHeight - dot.offsetHeight) / 2 - pad;
     gsap
-      .timeline({ repeat: -1, repeatDelay: 1.6, delay: 1.8 })
+      .timeline({ repeat: 2, repeatDelay: 1.6, delay: 1.8 })
       .to(dot, { x: dx, y: dy, duration: 0.9, ease: 'back.out(2)' })
       .call(() => (value.textContent = 'center'), [], 0.15)
       .to(dot, { rotate: 90, duration: 0.5, ease: 'power2.out' }, '+=0.2')

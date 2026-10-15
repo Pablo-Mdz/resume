@@ -50,7 +50,7 @@ const stages = [
               <h3 class="stage__title">{s.title}</h3>
               <p class="stage__text">{s.text}</p>
             </div>
-            <ul class="stage__chips" aria-label="Keywords">
+            <ul class="stage__chips" aria-label="Keywords" translate="no">
               {s.chips.map((c, j) => (
                 <li class="chip" data-float style={`--i:${j}`}>
                   {c}
@@ -75,7 +75,7 @@ const stages = [
             </p>
             <p class="stage__claim serif">Everything can be programmed.</p>
           </div>
-          <ul class="stage__chips" aria-label="Keywords">
+          <ul class="stage__chips" aria-label="Keywords" translate="no">
             {['LLMs', 'AI agents', 'Automation', 'Rapid prototyping'].map((c, j) => (
               <li class="chip" data-float style={`--i:${j}`}>
                 {c}

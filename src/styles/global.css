@@ -31,6 +31,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 6rem;
   scroll-behavior: auto;
 }
 
@@ -55,6 +56,12 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a,
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -85,6 +92,31 @@ ol {
   outline: 2px solid var(--indigo);
   outline-offset: 4px;
   border-radius: 4px;
+}
+
+/* indigo is too dark on ink backgrounds */
+.section--dark :focus-visible,
+.nav :focus-visible,
+.menu :focus-visible {
+  outline-color: var(--paper);
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 ::selection {
@@ -139,6 +171,7 @@ ol {
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 
 .section-title .serif {
@@ -325,5 +358,12 @@ html.motion [data-hero-photo] {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
+}
+
+/* skip-link target: a container, not a control, so no ring */
+#main:focus {
+  outline: none;
 }
