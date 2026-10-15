@@ -71,13 +71,12 @@ export const projects: Project[] = [
   },
   {
     title: 'Personal Trainer',
-    kind: 'Gym tracker with an AI coach · mobile-first',
-    categories: ['ai', 'web'],
-    stack: ['React', 'TypeScript', 'Supabase', 'Edge Functions', 'Claude API', 'Recharts', 'Tailwind'],
+    kind: 'Gym logger with AI coach',
+    categories: ['ai', 'web', 'mobile'],
+    stack: ['React', 'TypeScript', 'Supabase', 'Edge Functions', 'Claude Haiku 4.5', 'Tailwind', 'Recharts'],
     summary:
-      'The app I use for my own training: guided sessions with an A/B/C routine rotation, last-used weights, exercise guides and progress charts. An AI coach answers training and nutrition questions using my recent sessions as context, through a secured Supabase Edge Function.',
+      'A mobile-first gym logger I use daily. One tap logs a whole exercise, an in-progress session survives navigation, and a Claude-powered coach answers using my recent training history. Each Google account’s data is isolated with Postgres row-level security.',
     image: personalTrainer,
-    href: 'https://github.com/Pablo-Mdz/personal-trainer',
   },
   {
     title: 'Catering Manager',
