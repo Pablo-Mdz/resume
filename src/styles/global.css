@@ -47,6 +47,11 @@ body {
   overflow-x: clip;
 }
 
+/* astro:assets <Picture> wrappers shouldn't affect layout */
+picture {
+  display: contents;
+}
+
 img {
   display: block;
   max-width: 100%;
